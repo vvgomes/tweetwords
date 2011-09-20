@@ -1,0 +1,33 @@
+body {
+	font-family: Helvetica, sans-serif;
+	background-color: #C0DEED;
+	background-image: url(http://a0.twimg.com/images/themes/theme1/bg.png);
+	background-repeat: no-repeat;
+}
+
+#content {
+	margin-top: 20px;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+h1 {
+	font-size: 30px;
+	color: white;
+}
+
+strong {
+	font-weight: bold;
+	color: #0084B4;
+}
+
+#cloud {
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+}
+
+applet {
+	display: block;
+}
+
