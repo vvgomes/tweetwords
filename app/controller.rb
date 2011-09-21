@@ -4,9 +4,10 @@ Bundler.require :default
 
 configure do
   set :app_file, __FILE__
-  set :public, File.dirname(__FILE__)
-  set :views, File.dirname(__FILE__)
+  set :public, File.dirname(__FILE__)+'/../public'
+  set :views, File.dirname(__FILE__)+'/views'
 end
+
 
 get %r{^\/(\w+)$} do |user|
   client = Grackle::Client.new

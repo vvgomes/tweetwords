@@ -2,6 +2,6 @@ require 'rubygems'
 require 'rake'
 
 task :server do
-  ruby 'app.rb'
+  ruby 'app/controller.rb'
 end
 
