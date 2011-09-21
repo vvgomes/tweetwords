@@ -8,7 +8,6 @@ configure do
   set :views, File.dirname(__FILE__)+'/views'
 end
 
-
 get %r{^\/(\w+)$} do |user|
   client = Grackle::Client.new
   tweets = client.statuses.user_timeline? :screen_name => user
@@ -25,5 +24,9 @@ get %r{^\/(\w+)$} do |user|
     :user => user,
     :cloud => cloud
   }
+end
+
+get '/' do
+  redirect to '/vvgomes'
 end
 
