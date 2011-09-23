@@ -53,3 +53,11 @@ input[type="search"]:focus {
 	border-radius: 15px;
 }
 
+#error {
+	font-size: 30px;
+	font-weight: bold;
+	color: #F00000;
+  text-shadow: grey 1px 1px;
+	margin-left: 20px;
+}
+

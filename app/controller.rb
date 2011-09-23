@@ -14,19 +14,21 @@ end
 
 get %r{^\/(\w+)$} do |user|
   client = Grackle::Client.new
-  tweets = client.statuses.user_timeline? :screen_name => user
-  text = tweets.map{ |t| t.text }.join(' ')
 
-  params = { 'text' => text }
-  resource = URI.parse 'http://www.wordle.net/advanced'
-  response = Net::HTTP.post_form resource, params
+  begin
+    tweets = client.statuses.user_timeline? :screen_name => user
+    text = tweets.map{ |t| t.text }.join(' ')
 
-  html = Nokogiri::HTML response.body
-  cloud = html.css('applet').to_s
+    params = { 'text' => text }
+    resource = URI.parse 'http://www.wordle.net/advanced'
+    response = Net::HTTP.post_form resource, params
 
-  erb :cloud, :locals => {
-    :user => user,
-    :cloud => cloud
-  }
+    html = Nokogiri::HTML response.body
+    cloud = html.css('applet').to_s
+    erb :cloud, :locals => { :user => user, :cloud => cloud }
+
+  rescue Grackle::TwitterError
+    erb :index, :locals => { :notfound => true }
+  end
 end
 

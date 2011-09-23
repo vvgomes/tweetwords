@@ -12,6 +12,9 @@
     <div id="search">
       <input type="search" placeholder="twitterusername"
         autosave="unique" results="5" onkeydown="search(event)" />
+      <% if locals[:notfound] then %>
+      <span id="error">Not found :(</span>
+      <% end %>
     </div>
   </div>
   <a href="http://github.com/vvgomes/what_i_tweet_about">
