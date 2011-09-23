@@ -8,6 +8,10 @@ configure do
   set :views, File.dirname(__FILE__)+'/views'
 end
 
+get '/' do
+  erb :index
+end
+
 get %r{^\/(\w+)$} do |user|
   client = Grackle::Client.new
   tweets = client.statuses.user_timeline? :screen_name => user
@@ -20,13 +24,9 @@ get %r{^\/(\w+)$} do |user|
   html = Nokogiri::HTML response.body
   cloud = html.css('applet').to_s
 
-  erb :index, :locals => {
+  erb :cloud, :locals => {
     :user => user,
     :cloud => cloud
   }
-end
-
-get '/' do
-  redirect to '/vvgomes'
 end
 

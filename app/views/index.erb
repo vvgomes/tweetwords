@@ -2,14 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>Tweet About</title>
+	<title>What I Tweet About</title>
   <link href="styles.css" rel="stylesheet" type="text/css" />
+  <script src="javascripts.js"></script>
 </head>
 <body>
-    <div id="content">
-		  <h1>That's what <strong>@<%= user %></strong> is tweeting about lately...</h1>
-      <div id="cloud"><%= cloud %></div>
+  <div id="content">
+	  <h1>Find out what people are tweeting about lately...</h1>
+    <div id="search">
+      <input type="search" placeholder="twitterusername"
+        autosave="unique" results="5" onkeydown="search(event)" />
     </div>
+  </div>
+  <a href="http://github.com/vvgomes/what_i_tweet_about">
+    <img style="position: absolute; top: 0; right: 0; border: 0;"
+      src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67"
+      alt="Fork me on GitHub" />
+  </a>
 </body>
 </html>
 
