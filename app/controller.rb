@@ -27,7 +27,8 @@ get %r{^\/(\w+)$} do |user|
     cloud = html.css('applet').to_s
     erb :cloud, :locals => { :user => user, :cloud => cloud }
 
-  rescue Grackle::TwitterError, RuntimeError
+  rescue Grackle::TwitterError, RuntimeError => e
+    puts "something went wrong: #{e.message}"
     erb :index, :locals => { :notfound => true }
   end
 end
