@@ -7,7 +7,14 @@
 </head>
 <body>
   <div id="content">
-	  <h1>That's what <strong>@<%= user %></strong> is tweeting about lately...</h1>
+	  <h1>That's what <strong><a href="http://twitter.com/<%= user %>">@<%= user %></a></strong> is tweeting about lately...</h1>
+    <div id="twitter">
+      <a href="https://twitter.com/share" 
+      class="twitter-share-button" 
+      data-text="Find out my twitter word cloud :)" 
+      data-size="large">Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
     <div id="cloud"><%= cloud %></div>
   </div>
   <a href="http://github.com/vvgomes/what_i_tweet_about">
