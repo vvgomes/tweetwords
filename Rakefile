@@ -3,6 +3,6 @@ require 'bundler/setup'
 require 'rake'
 
 task :server do
-  ruby 'app/controller.rb'
+  rackup 'app/controller.rb'
 end
 

@@ -17,19 +17,17 @@ get %r{^\/(\w+)$} do |user|
 
   begin
     tweets = client.statuses.user_timeline? :screen_name => user
-    text = tweets.map{ |t| t.text }.join(' ')
+    words = tweets.map(&:text).reduce([]){ |t, e| t + e.split }
 
-    params = { 'text' => text }
-    resource = URI.parse 'http://www.wordle.net/advanced'
-    response = Net::HTTP.post_form resource, params
+    counts = words.reduce({}) do |t, e| 
+      t[e] = t[e] ? t[e] + 1 : 1 ; t
+    end
+    
+    erb :cloud, :locals => { :user => user, :counts => counts }
 
-    html = Nokogiri::HTML response.body
-    cloud = html.css('applet').to_s
-    erb :cloud, :locals => { :user => user, :cloud => cloud }
-
-  rescue Grackle::TwitterError, RuntimeError => e
-    puts "something went wrong: #{e.message}"
-    erb :index, :locals => { :notfound => true }
-  end
+   rescue Grackle::TwitterError, RuntimeError => e
+     puts "something went wrong: #{e.message}"
+     erb :index, :locals => { :notfound => true }
+   end
 end
 

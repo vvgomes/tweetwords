@@ -1,0 +1,9 @@
+- zepto instead of jquery
+- cloud background
+- remove unecessary js
+- fb like bt
+- fork me link
+- user pic
+- better ui
+  - good looking font for the cloud
+- about
